@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Odisea - Portada y Encabezado</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    /* PORTADA */
+    #portada-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #portada {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #titulo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Merriweather', serif;
+      font-size: 5em;
+      font-weight: 700;
+      color: white;
+      text-shadow: 3px 3px 7px rgba(0,0,0,0.7);
+    }
+
+    #btn-siguiente {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgb(0,105,128);
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      z-index: 2;
+      transition: 0.3s;
+    }
+
+    #btn-siguiente:hover {
+      background-color: rgb(0,80,100);
+    }
+
+    /* ENCABEZADO */
+    #encabezado {
+      display: none; /* inicialmente oculto */
+      min-height: 100vh;
+      background-color: #001f3f; /* azul oscuro */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 40px;
+      box-sizing: border-box;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background-color: rgb(0,105,128);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    nav button:hover, nav button.active {
+      background-color: rgb(0,80,100);
+    }
+
+    #info {
+      background-color: white;
+      color: black;
+      display: none;
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+      text-align: left;
+    }
+
+    .imagen-concepto {
+      margin: 15px 0;
+    }
+
+    .imagen-concepto img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .pie {
+      margin-top: 5px;
+      font-style: italic;
+      color: #333;
+      font-size: 1em;
+    }
+
+    .personajes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .personaje-item {
+      text-align: center;
+    }
+
+    .personaje-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .personaje-item .pie {
+      color: black;
+    }
+
+    /* Botón ANTERIOR al final */
+    #btn-anterior {
+      margin-top: auto;
+      margin-bottom: 40px;
+      background-color: rgb(0,105,128);
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    #btn-anterior:hover {
+      background-color: rgb(0,80,100);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <div id="portada-container">
+    <img id="portada" src="portada.jpg" alt="Portada La Odisea">
+    <div id="titulo">LA ODISEA</div>
+    <button id="btn-siguiente" onclick="mostrarEncabezado()">SIGUIENTE</button>
+  </div>
+
+  <!-- ENCABEZADO -->
+  <div id="encabezado">
+    <nav>
+      <button id="btn-concepto" onclick="mostrarInfo('concepto')">CONCEPTO</button>
+      <button id="btn-personajes" onclick="mostrarInfo('personajes')">PERSONAJES</button>
+      <button id="btn-mapa" onclick="mostrarInfo('mapa')">MAPA</button>
+    </nav>
+
+    <div id="info">
+      <div id="contenido"></div>
+      <div id="imagenes"></div>
+    </div>
+
+    <button id="btn-anterior" onclick="volverPortada()">ANTERIOR</button>
+  </div>
+
+  <script>
+    const datos = {
+      concepto: [
+        { imagen: "im", texto: "Inicio de la Odisea, Odiseo zarpa de Troya." }
+      ],
+      personajes: [
+        { imagen: "imgen1.jpg", texto: "Odiseo: héroe griego, astuto y valiente." },
+        { imagen: "personaje2.jpg", texto: "Penélope: esposa fiel de Odiseo." },
+        { imagen: "personaje3.jpg", texto: "Telémaco: hijo de Odiseo y Penélope." },
+        { imagen: "personaje4.jpg", texto: "Cíclope: enemigo de Odiseo." },
+        { imagen: "personaje5.jpg", texto: "Circe: hechicera que transforma a los hombres en animales." },
+        { imagen: "personaje6.jpg", texto: "Sirenas: criaturas que atraen con su canto." },
+        { imagen: "personaje7.jpg", texto: "Polifemo: cíclope gigante." },
+        { imagen: "personaje8.jpg", texto: "Atenea: diosa que ayuda a Odiseo." },
+        { imagen: "personaje9.jpg", texto: "Poseidón: dios del mar, enemigo de Odiseo." }
+      ],
+      mapa: [
+        { imagen: "mapa.jpg", texto: "Mapa de los viajes de Odiseo a Ítaca." }
+      ]
+    };
+
+    function mostrarEncabezado() {
+      document.getElementById('portada-container').style.display = 'none';
+      document.getElementById('encabezado').style.display = 'flex';
+    }
+
+    function volverPortada() {
+      document.getElementById('encabezado').style.display = 'none';
+      document.getElementById('portada-container').style.display = 'block';
+      document.getElementById('info').style.display = 'none';
+      document.getElementById('imagenes').innerHTML = '';
+      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+    }
+
+    function mostrarInfo(seccion){
+      document.getElementById("info").style.display = "block";
+      document.getElementById("imagenes").innerHTML = '';
+      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+      document.getElementById("btn-" + seccion).classList.add("active");
+
+      let html = "";
+      if(seccion === "concepto" || seccion === "mapa") {
+        datos[seccion].forEach(item => {
+          html += `<div class="imagen-concepto">
+                     <img src="${item.imagen}" alt="${seccion}">
+                     <div class="pie">${item.texto}</div>
+                   </div>`;
+        });
+      } else if(seccion === "personajes") {
+        html += '<div class="personajes-grid">';
+        datos.personajes.forEach(item => {
+          html += `<div class="personaje-item">
+                     <img src="${item.imagen}" alt="Personaje">
+                     <div class="pie">${item.texto}</div>
+                   </div>`;
+        });
+        html += '</div>';
+      }
+
+      document.getElementById("imagenes").innerHTML = html;
+      document.getElementById("contenido").textContent = "";
+    }
+  </script>
+
+</body>
+</html>
