@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Odisea - Portada y Encabezado</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-
     body {
       margin: 0;
       padding: 0;
@@ -14,7 +12,6 @@
       text-align: center;
       background-color: #f4f4f4;
     }
-
     /* PORTADA */
     #portada-container {
       position: relative;
@@ -22,13 +19,11 @@
       height: 100vh;
       overflow: hidden;
     }
-
     #portada {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
     #titulo {
       position: absolute;
       top: 50%;
@@ -40,13 +35,12 @@
       color: white;
       text-shadow: 3px 3px 7px rgba(0,0,0,0.7);
     }
-
     #btn-siguiente {
       position: absolute;
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: rgb(0,105,128);
+      background-color: rgb(7, 10, 11);
       color: white;
       padding: 15px 30px;
       border: none;
@@ -56,16 +50,14 @@
       z-index: 2;
       transition: 0.3s;
     }
-
     #btn-siguiente:hover {
-      background-color: rgb(0,80,100);
+      background-color: rgb(12, 12, 12);
     }
-
     /* ENCABEZADO */
     #encabezado {
-      display: none; /* inicialmente oculto */
+      display: none;
       min-height: 100vh;
-      background-color: #001f3f; /* azul oscuro */
+      background-color: hsl(0, 0%, 4%);
       color: white;
       display: flex;
       flex-direction: column;
@@ -74,7 +66,6 @@
       padding-top: 40px;
       box-sizing: border-box;
     }
-
     nav {
       display: flex;
       justify-content: center;
@@ -82,9 +73,8 @@
       margin-top: 20px;
       flex-wrap: wrap;
     }
-
     nav button {
-      background-color: rgb(0,105,128);
+      background-color: rgb(22, 142, 142);
       border: none;
       color: white;
       padding: 10px 20px;
@@ -93,92 +83,78 @@
       border-radius: 5px;
       transition: 0.3s;
     }
-
     nav button:hover, nav button.active {
-      background-color: rgb(0,80,100);
+      background-color: rgb(14, 14, 15);
     }
-
     #info {
-      background-color: white;
-      color: black;
+      background-color: rgb(0, 0, 0);
+      color: rgb(247, 234, 234);
       display: none;
       margin: 20px auto;
       padding: 20px;
       width: 90%;
       max-width: 900px;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(14, 14, 14, 0.2);
       font-size: 1.2em;
       text-align: left;
     }
-
     .imagen-concepto {
       margin: 15px 0;
     }
-
     .imagen-concepto img {
       max-width: 100%;
       height: auto;
       border-radius: 5px;
     }
-
     .pie {
       margin-top: 5px;
       font-style: italic;
-      color: #333;
+      color: #e7caca;
       font-size: 1em;
     }
-
     .personajes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
       margin-top: 10px;
     }
-
     .personaje-item {
       text-align: center;
     }
-
     .personaje-item img {
       width: 100%;
       height: auto;
       border-radius: 5px;
     }
-
     .personaje-item .pie {
-      color: black;
+      color: rgb(236, 231, 231);
     }
-
     /* Botón ANTERIOR al final */
     #btn-anterior {
       margin-top: auto;
       margin-bottom: 40px;
-      background-color: rgb(0,105,128);
-      color: white;
+      background-color: rgb(10, 10, 10);
+      color: rgb(232, 223, 223);
       padding: 15px 30px;
       border: none;
       font-size: 1.2em;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 5%;
       transition: 0.3s;
     }
-
     #btn-anterior:hover {
-      background-color: rgb(0,80,100);
+      background-color: rgb(11, 148, 182);
     }
-
   </style>
 </head>
 <body>
-
   <!-- PORTADA -->
   <div id="portada-container">
-    <img id="portada" src="portada.jpg" alt="Portada La Odisea">
+    <img id="portada" src="pirate_background.jpg" alt="Portada La Odisea">
     <div id="titulo">LA ODISEA</div>
     <button id="btn-siguiente" onclick="mostrarEncabezado()">SIGUIENTE</button>
   </div>
-
   <!-- ENCABEZADO -->
   <div id="encabezado">
     <nav>
@@ -186,41 +162,76 @@
       <button id="btn-personajes" onclick="mostrarInfo('personajes')">PERSONAJES</button>
       <button id="btn-mapa" onclick="mostrarInfo('mapa')">MAPA</button>
     </nav>
-
     <div id="info">
       <div id="contenido"></div>
       <div id="imagenes"></div>
     </div>
-
     <button id="btn-anterior" onclick="volverPortada()">ANTERIOR</button>
   </div>
-
   <script>
-    const datos = {
-      concepto: [
-        { imagen: "im", texto: "Inicio de la Odisea, Odiseo zarpa de Troya." }
-      ],
-      personajes: [
-        { imagen: "imgen1.jpg", texto: "Odiseo: héroe griego, astuto y valiente." },
-        { imagen: "personaje2.jpg", texto: "Penélope: esposa fiel de Odiseo." },
-        { imagen: "personaje3.jpg", texto: "Telémaco: hijo de Odiseo y Penélope." },
-        { imagen: "personaje4.jpg", texto: "Cíclope: enemigo de Odiseo." },
-        { imagen: "personaje5.jpg", texto: "Circe: hechicera que transforma a los hombres en animales." },
-        { imagen: "personaje6.jpg", texto: "Sirenas: criaturas que atraen con su canto." },
-        { imagen: "personaje7.jpg", texto: "Polifemo: cíclope gigante." },
-        { imagen: "personaje8.jpg", texto: "Atenea: diosa que ayuda a Odiseo." },
-        { imagen: "personaje9.jpg", texto: "Poseidón: dios del mar, enemigo de Odiseo." }
-      ],
-      mapa: [
-        { imagen: "mapa.jpg", texto: "Mapa de los viajes de Odiseo a Ítaca." }
-      ]
-    };
-
+ const datos = {
+  concepto: [
+    {
+      imagen: "imagen_concepto.jpg",
+      texto: "Julián, un joven pero hábil marinero conocido por su valentía y su facilidad para orientarte en mar abierto. Forma parte de la tripulación del barco pirata “La Odisea”, comandado por un capitán tan ambicioso como temido. Durante meses habéis seguido rumores sobre la desaparición del legendario navío “La Venganza de la Reina Ana”, un barco envuelto en supersticiones, desapariciones y relatos de un tesoro capaz de hacer rico a cualquier pirata durante diez generaciones. El viaje fue largo y peligroso, y las discusiones entre los miembros de la tripulación aumentaron a medida que se acercaban a la zona donde el barco desapareció. Finalmente, una tormenta colosal golpeó La Odisea durante la noche. Entre truenos, olas gigantes y gritos desesperados, Julian pierde el control del timón y la oscuridad lo envolvio. Despierta ahora en una playa desconocida, con la arena pegada a la piel y el rugido del océano detrás de el. No ve a nadie más. Ni rastro del barco. Ni del capitán. Solo tiene su espada, sus alforjas y una única certeza: la isla en la que está no es un lugar cualquiera. Algo antiguo, poderoso y peligroso se esconde entre su selva y sus acantilados. Pero también… las respuestas que necesita para sobrevivir y encontrar el tesoro que tantos buscan..."
+    }
+  ],
+  personajes: [
+    {
+      imagen: "personaje_1.jpg",
+      texto: "Julián: Eres miembro de la tripulación de 'La Odisea'. Te despiertas tras el naufragio en una playa desconocida..."
+    },
+    {
+      imagen: "personaje_2.jpg",
+      texto: "Aurora: Antigua tripulante de la tripulación de 'La Odisea', decidió abandonar la vida de pirata por desacuerdos con el capitán..."
+    },
+    {
+      imagen: "personaje_3.jpg",
+      texto: "Olivia: Amiga cercana de Aurora y probablemente también parte de la tripulación..."
+    },
+    {
+      imagen: "personaje_4.jpg",
+      texto: "El capitán: Líder autoritario de 'La Odisea'. Su trato rígido y obstinado provocó la deserción de Aurora..."
+    },
+    {
+      imagen: "personaje_5.jpg",
+      texto: "La criatura frente al templo: Un antiguo marinero o timonel atrapado en el templo..."
+    },
+    {
+      imagen: "personaje_6.jpg",
+      texto: "El gato sin piel: Criatura macabra encontrada en 'La Venganza de la Reina Ana'..."
+    },
+    {
+      imagen: "personaje_7.jpg",
+      texto: "La tripulación de 'La Odisea': Compañeros de viaje que reaparecen al final reparando el barco tras el naufragio..."
+    }
+  ],
+  mapa: {  
+    imagen: "MAPA_JUNGLA.jpg",
+    textos: [
+      "Playa – Te despiertas solo, con espada y alforjas. Al oeste hay una construcción, al sur selva y al este un acantilado..",
+      "Acantilado – Un precipicio de 20 metros con olas fuertes. Desde arriba ves una construcción central y una abertura al mar. Escalar sin cuerda es peligroso.",
+      "Abertura – Entrada derrumbada de una cueva donde el mar ha dejado restos de barcos y conchas. Destaca una caracola nacarada.",
+      "Campamento – Antigua construcción abandonada. Solo hay madera, comida podrida, una soga y una carta de Aurora explicando su retiro del tesoro y su refugio.",
+      "Jungla – Caminas por la selva y llegas a un estanque. Puedes comer ranas (game over) o buscar frutas para sobrevivir y continuar al sur.",
+      "Templo exterior – Una criatura atrapada desea un objeto del mar. No es agresiva. Puedes huir o entregarle la caracola para interactuar.",
+      "Templo interior – Sala con brasero y 6 botellas de colores con acertijo sobre venenos y licor. Beber la botella verde permite interactuar con un interruptor que revela escaleras ocultas.",
+      "Cueva – Gran cueva subterránea parcialmente inundada donde se encuentra “La Venganza de la Reina Ana”. Opciones: observar, entrar al barco o nadar por túnel submarino (si tienes el mapa).",
+      "Barco – El barco está vacío con signos de lucha. Un gato macabro con huesos y llave guarda la entrada a la bodega.",
+      "Bodega – Cofre lleno de oro y gemas. Diario revela conflictos de la tripulación y un mapa hacia un túnel subacuático al sur de la isla.",
+      "Playa sur – Sales del túnel submarino y encuentras tu barco, La Odisea, siendo reparado por la tripulación. Has sobrevivido y regresado con ellos."
+    ]
+  }
+};
+ function mostrarEncabezado() {
+  document.getElementById('portada-container').style.display = 'none';
+  document.getElementById('encabezado').style.display = 'flex';
+  mostrarInfo('concepto'); // Llamar a la sección 'concepto' por defecto
+}
     function mostrarEncabezado() {
       document.getElementById('portada-container').style.display = 'none';
       document.getElementById('encabezado').style.display = 'flex';
     }
-
     function volverPortada() {
       document.getElementById('encabezado').style.display = 'none';
       document.getElementById('portada-container').style.display = 'block';
@@ -228,36 +239,51 @@
       document.getElementById('imagenes').innerHTML = '';
       document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
     }
-
     function mostrarInfo(seccion){
-      document.getElementById("info").style.display = "block";
-      document.getElementById("imagenes").innerHTML = '';
-      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
-      document.getElementById("btn-" + seccion).classList.add("active");
+  document.getElementById("info").style.display = "block";
+  document.getElementById("imagenes").innerHTML = '';
+  document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+  document.getElementById("btn-" + seccion).classList.add("active");
 
-      let html = "";
-      if(seccion === "concepto" || seccion === "mapa") {
-        datos[seccion].forEach(item => {
-          html += `<div class="imagen-concepto">
-                     <img src="${item.imagen}" alt="${seccion}">
-                     <div class="pie">${item.texto}</div>
-                   </div>`;
-        });
-      } else if(seccion === "personajes") {
-        html += '<div class="personajes-grid">';
-        datos.personajes.forEach(item => {
-          html += `<div class="personaje-item">
-                     <img src="${item.imagen}" alt="Personaje">
-                     <div class="pie">${item.texto}</div>
-                   </div>`;
-        });
-        html += '</div>';
-      }
+  let html = "";
 
-      document.getElementById("imagenes").innerHTML = html;
-      document.getElementById("contenido").textContent = "";
-    }
+  if(seccion === "concepto") {
+    datos.concepto.forEach(item => {
+      html += `
+        <div class="imagen-concepto">
+          <img src="${item.imagen}" alt="concepto">
+          <div class="pie">${item.texto}</div>
+        </div>`;
+    });
+  }
+
+  else if(seccion === "personajes") {
+    html += '<div class="personajes-grid">';
+    datos.personajes.forEach(item => {
+      html += `
+        <div class="personaje-item">
+          <img src="${item.imagen}" alt="Personaje">
+          <div class="pie">${item.texto}</div>
+        </div>`;
+    });
+    html += '</div>';
+  }
+
+  else if(seccion === "mapa") {
+    html += `
+      <div class="mapa-container">
+        <img src="${datos.mapa.imagen}" alt="Mapa">
+        <ul class="mapa-lista">
+          ${datos.mapa.textos.map(t => `<li>${t}</li>`).join("")}
+        </ul>
+      </div>`;
+  }
+
+  document.getElementById("imagenes").innerHTML = html;
+  document.getElementById("contenido").textContent = "";
+}
+
+
   </script>
-
 </body>
 </html>
